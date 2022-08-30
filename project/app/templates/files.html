@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Files data</title>
+</head>
+<body>
+<div>
+    <button onclick="location.href='{% url 'view_crud' %}'">Create</button>
+</div>
+<p><mark>Below table is show all of the database file records (READ)</mark></p>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Action</th>
+        <th>Filename</th>
+        <th>Filepath</th>
+        <th>Date</th>
+    </tr>
+    {% for row in files %}
+        <tr>
+            <td>
+                <a href="{% url 'view_files_update' pk=row.id %}">{{ forloop.counter }}</a>
+            </td>
+            <td>
+                <button onclick="location.href='{% url 'delete_files' pk=row.id %}'">Delete</button>
+            </td>
+            <td style="width: 50px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;">{{ row.input_file }}</td>
+            <td>{{ row.input_filepath }}</td>
+            <td>{{ row.date }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Texts - id</title>
+</head>
+<body>
+<div>
+    <button onclick="location.href='{% url 'view_texts' %}'">Return</button>
+    <button onclick="location.href='{% url 'delete_texts' pk=texts.id %}'">Delete this record</button>
+</div>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="form" value="update_texts">
+    <input type="hidden" name="id" value="{{ texts.id }}">
+    <input type="hidden" name="date" value="-">
+    <fieldset>
+        <legend>Texts Edit</legend>
+        <p><mark>This text edit form can be used for (UPDATE) current text record</mark></p>
+        <p>Created in: {{ texts.date }}</p>
+        <label>
+            Text value
+            <input type="text" name="input_text" maxlength="25" value="{{ texts.input_text }}" required>
+        </label><br>
+        <label>
+            Radio value
+            <input type="radio" name="input_radio" value="Text1"
+                    {% if texts.input_radio == "Text1" %} checked
+                    {% endif %}> Text1
+            <input type="radio" name="input_radio" value="Text2"
+                    {% if texts.input_radio == "Text2" %} checked
+                    {% endif %}> Text2
+            <input type="radio" name="input_radio" value="Text3"
+                    {% if texts.input_radio == "Text3" %} checked
+                    {% endif %}> Text3
+        </label><br>
+        <label>
+            Select value
+            <select name="input_select" required>
+                <option value="Text1"
+                        {% if texts.input_radio == "Text1" %} selected
+                        {% endif %}>Text1
+                </option>
+                <option value="Text2"
+                        {% if texts.input_radio == "Text2" %} selected
+                        {% endif %}>Text2
+                </option>
+                <option value="Text3"
+                        {% if texts.input_radio == "Text3" %} selected
+                        {% endif %}>Text3
+                </option>
+            </select>
+        </label><br>
+        <label>
+            Textarea value
+            <textarea name="input_textarea" required>{{ texts.input_textarea }}</textarea>
+        </label><br>
+        <input type="submit" value="Update Now">
+    </fieldset>
+</form>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+</head>
+<body>
+<h1>CRUD</h1>
+<div>
+    <button onclick="location.href='text.html'">Text data</button>
+    <button onclick="location.href='files.html'">Files Data</button>
+</div>
+<form action="" method="post">
+    <fieldset>
+        <legend>Text</legend>
+        <label>
+            Enter text
+            <input type="text" name="input_text">
+        </label><br>
+        <label>
+            Choose text
+            <input type="radio" name="input_radio" value="Text1"> Text1
+            <input type="radio" name="input_radio" value="Text2"> Text2
+            <input type="radio" name="input_radio" value="Text3"> Text3
+        </label><br>
+        <label>
+            Select text
+            <select name="input_select">
+                <option value="Text1">Text1</option>
+                <option value="Text2">Text2</option>
+                <option value="Text3">Text3</option>
+            </select>
+        </label><br>
+        <label>
+            Enter text
+            <textarea name="input_textarea">
+            </textarea>
+        </label><br>
+        <input type="submit">
+    </fieldset>
+</form>
+
+<form action="" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>File</legend>
+        <input type="file" name="input_file">
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+</body>
+</html>

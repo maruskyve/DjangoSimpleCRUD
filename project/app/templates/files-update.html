@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Files - id</title>
+</head>
+<body>
+<div>
+    <button onclick="location.href='{% url 'view_files' %}'">Return</button>
+    <button onclick="location.href='{% url 'delete_files' pk=files.id %}'">Delete</button>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="form" value="update_files">
+    <fieldset>
+        <legend>Files Edit</legend>
+        <p><mark>This is file edit form that you can use for (UPDATE) current file</mark></p>
+        <p>Current file: {{ files.input_file }}</p>
+        <p>Created in: {{ files.date }}</p>
+        <label for="">
+            Insert new file:
+            <input type="file" name="input_file" multiple>
+        </label>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text data</title>
+</head>
+<body>
+<div>
+    <button onclick="location.href='{% url 'view_crud' %}'">Create</button>
+</div>
+<p><mark>Below table show all of the text records in the databas</mark>></p>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Text</th>
+        <th>Radio</th>
+        <th>Select</th>
+        <th>Textarea</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+    {% for row in texts %}
+        <tr>
+            <td><a href="{% url 'view_texts_update' pk=row.id %}">{{ forloop.counter }}</a></td>
+            <td>{{ row.input_text }}</td>
+            <td>{{ row.input_select }}</td>
+            <td>{{ row.input_radio }}</td>
+            <td>{{ row.input_textarea }}</td>
+            <td>{{ row.date }}</td>
+            <td>
+                <!-- url with param in template -->
+                <button onclick="location.href='{% url 'delete_texts' pk=row.id %}'">Delete</button>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

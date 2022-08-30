@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+</head>
+<body>
+<h1>CRUD</h1>
+<p>A simple of django CREATE, READ, UPDATE, DELETE (CRUD) example</p>
+<div>
+    <button onclick="location.href='{% url 'view_texts' %}'">Text data</button>
+    <button onclick="location.href='{% url 'view_files' %}'">Files Data</button>
+</div>
+<form action="/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="form" value="create_texts">
+    <input type="hidden" name="date" value="-">
+    <fieldset>
+        <legend>Text</legend>
+        <p><mark>Below is the example of text data form that you can send to database (CREATE)</mark></p>
+        <label>
+            Enter text
+            <input type="text" name="input_text" maxlength="25" required>
+        </label><br>
+        <label>
+            Choose text
+            <input type="radio" name="input_radio" value="Text1" checked> Text1
+            <input type="radio" name="input_radio" value="Text2"> Text2
+            <input type="radio" name="input_radio" value="Text3"> Text3
+        </label><br>
+        <label>
+            Select text
+            <select name="input_select" required>
+                <option value="Text1" selected>Text1</option>
+                <option value="Text2">Text2</option>
+                <option value="Text3">Text3</option>
+            </select>
+        </label><br>
+        <label>
+            Enter text
+            <textarea name="input_textarea" required></textarea>
+        </label><br>
+        <input type="submit">
+    </fieldset>
+</form>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="form" value="create_files">
+    <fieldset>
+        <legend>File</legend>
+        <p><mark>Below is the example of file data form that you can insert to database (CREATE)</mark></p>
+        <input type="file" name="input_file" multiple required>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<p>Visit me on <a href="https://github.com/maruskyve">github.com/maruskyve</a></p>
+</body>
+</html>
